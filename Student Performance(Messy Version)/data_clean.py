@@ -47,6 +47,27 @@ print(top_index)
 print("Top student: ", ans[top_index])
 print("Removed students:", len(data)-len(ans))
 
+totals = np.sum(ans,axis = 1)
+rank_indices = np.argsort(-totals)
+print("Ranking Students(Best to worst): ")
+for rank,idx in enumerate(rank_indices, start =1):
+    print(f"Rank {rank}: Student {idx} -> Total = {totals[idx]}")
+def assign_grade(total):
+    if total>=90:
+        return "A"
+    elif total>=75:
+        return "B"
+    elif total>=60:
+        return "C"
+    else:
+        return "D"
+for i,total in enumerate(totals):
+    grade = assign_grade(total/3)
+    print(f"Student {i}: Grade {grade}")
+
+
+
+
 
 
 
